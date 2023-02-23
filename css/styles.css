@@ -2,3 +2,7 @@ body{
     width: 100vw;
     height: 100vh;
 }
+
+.nav-links{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
