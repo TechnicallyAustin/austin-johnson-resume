@@ -51,7 +51,7 @@ const resume = (() => {
             section.setAttribute("class", `${item.toLowerCase()}`)
 
             const title = section.appendChild(document.createElement("h2"))
-            title.setAttribute("class", `${item.toLowerCase()}-item text-white`)
+            title.setAttribute("class", `${item.toLowerCase()}-item text-white `)
             title.textContent = `${item}`
         }
     }
@@ -79,9 +79,10 @@ const resume = (() => {
     }
     const projects = () => {
         const section = document.querySelector(".projects")
-        section.setAttribute("class", "projects")
-        const list = section.appendChild(document.createElement("ul"));
-        const titles = ["DigitalDash", "Nakama", "LaterGram"]
+        const subSection = section.appendChild(document.createElement("div"))
+        subSection.setAttribute("class", "d-flex justify-content-around gap-3 m-3")
+
+        const titles = ["DigitalDash", "Nakama", "LaterGram", "AZ88"]
         
         const project = (title, link, description, technologies) => {
             const getTitle = () => {}
@@ -95,27 +96,47 @@ const resume = (() => {
         // creates DOM Project Objects
         for (let i = 0; i < titles.length; i++){
             let item = titles[i]
-            let article = section.appendChild(document.createElement("article"));
-            article.setAttribute("class", `${item.toLowerCase()}`)
+            let article = subSection.appendChild(document.createElement("article"));
+            article.setAttribute("class", `${item.toLowerCase()}text-center border`)
             // using the project title create project cards
 
+            // Card
             let card = article.appendChild(document.createElement("div"));
-            card.setAttribute("class", "card");
+            card.setAttribute("class", "card border-primary d-flex flex-column justify-content-around align-items-around");
 
+            // Header
             let header = article.appendChild(document.createElement("div"));
             header.setAttribute("class", "card-header text-white");
-            header.textContent = `${titles[i]}`
 
-            let title = article.appendChild(document.createElement("h3"));
-            title.setAttribute("class", "card-title");
-            title.textContent = "Text"
+            let title = header.appendChild(document.createElement("h4"))
+            title.setAttribute("class", "mb-0")
+            title.textContent = `${titles[i]}`
+            
+            // Link
+            let link = article.appendChild(document.createElement("p"));
+            link.setAttribute("class", "card-title text-white mb-0");
+            link.textContent = "Github Pages Link"
 
-
+            // Body
             let body = article.appendChild(document.createElement("div"));
             body.setAttribute("class", "card-body");
 
+            let description = body.appendChild(document.createElement("p"));
+            description.setAttribute("class", "project-description mb-0 text-white")
+            description.textContent = "This is a blurb about what was learned and accomplished in this project"
+
+            // Footer
             let footer = article.appendChild(document.createElement("div"));
             footer.setAttribute("class", "card-footer");
+
+            let footerInfo = footer.appendChild(document.createElement("p"));
+            footerInfo.setAttribute("class", "footer-info mb-0 text-white");
+            footerInfo.textContent = "Technologies used"
+
+            let footerButton = footer.appendChild(document.createElement("button"));
+            footerButton.setAttribute("class", "btn btn-primary")
+            footerButton.setAttribute("href", "#")
+            footerButton.textContent = "See my Code!"
 
             let newProject = project(header, title, body, footer);
 
@@ -126,11 +147,33 @@ const resume = (() => {
     const experience = () => {
         const section = document.querySelector(".experience");
         const article = section.appendChild(document.createElement("article"));
-        
-           for (let i = 0; i < 3; i++){
-            let item = article.appendChild(document.createElement("li"))
-            item.setAttribute("class", "experience-list ")
-            item.textContent = "bullet"
+        article.setAttribute("class","job d-flex flex-column justify-content-around align-items-start")
+        const jobs = ["Comagine Health", "Apple", "OSU Client Services"]
+        const positions = ["System Administrator", "Technical Specialist", "Technical Support Analyst"]
+        const dates = ["October 2018 - Present", "August 2017 - October 2018", "January 2016 - June 2017"]
+        let work = article.appendChild(document.createElement("div"));
+        work.setAttribute("class", "previous-jobs");
+
+           for (let i = 0; i < jobs.length; i++){
+            let job = jobs[i]
+            let position = positions[i]
+            let date = dates[i]
+
+            let jobItem = article.appendChild(document.createElement("div"))
+            jobItem.setAttribute("class", "job-item text-white")
+
+            let company = jobItem.appendChild(document.createElement("h5"));
+            company.setAttribute("class", "company")
+            company.textContent = `${job}`
+
+            // group in a div, space between
+            
+            let title = jobItem.appendChild(document.createElement("div"))
+            title.setAttribute("class", "job-title")
+            title.textContent =`${position}`;
+            let worked = jobItem.appendChild(document.createElement("p"));
+            worked.setAttribute("class", "employ-dates");
+            worked.textContent =`${date}`
         }
     }
 
@@ -145,5 +188,6 @@ resume.sections()
 resume.summary()
 resume.skills()
 resume.projects()
+resume.experience()
 
 
