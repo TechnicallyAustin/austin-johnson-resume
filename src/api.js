@@ -60,7 +60,7 @@ const resume = (() => {
         const section = document.querySelector(".summary");
         const article = section.appendChild(document.createElement("article"));
         const info = section.appendChild(document.createElement("p"));
-        info.setAttribute("class", "summary-info text-white ms-5")
+        info.setAttribute("class", "summary-info text-white p-3 ms-4 mb-0")
         info.textContent = "As a self-taught developer, I have spent the past five years deeply immersed in the world of software development and computer science. During this time, I have taught myself core development principles, built numerous projects, and continuously refined my skills. I am passionate about creating performative and creative solutions that can improve the lives of those around me using technology." + 
                            "As a systems administrator, I have honed my ability to provide excellent solutions to any challenges that may arise. Through this experience, I have developed a knack for crafting innovative and impactful solutions. I am now eager to apply my skills and experience to a new challenge."
 
@@ -166,9 +166,12 @@ const resume = (() => {
             let jobItem = article.appendChild(document.createElement("div"))
             jobItem.setAttribute("class", "job-item text-white w-100 p-3")
 
+            // group comany and a drop down SVG in a div to dynamically create jobs info.
+            // display the in a row.
             let company = jobItem.appendChild(document.createElement("h5"));
             company.setAttribute("class", "company mb-0")
             company.textContent = `${job}`
+
 
             // group in a div, space between
             let infoDiv = jobItem.appendChild(document.createElement("div"));
